@@ -1,0 +1,29 @@
+{
+  "name": "healthy-gaming-timer",
+  "version": "1.0.0",
+  "description": "A desktop and web app to help gamers build healthier habits.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:react\" \"npm:dev:api\" \"npm:dev:electron\"",
+    "dev:react": "cd frontend && npm run dev",
+    "dev:api": "cd backend && node server.js",
+    "dev:electron": "wait-on http://localhost:5173 && electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewpjlewis/healthy-gaming-timer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/andrewpjlewis/healthy-gaming-timer/issues"
+  },
+  "homepage": "https://github.com/andrewpjlewis/healthy-gaming-timer#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^36.5.0",
+    "wait-on": "^8.0.3"
+  }
+}
