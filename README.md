@@ -38,7 +38,16 @@ These instructions will help you set up the project locally on your machine.
     npm install
     cd ..
 
-5. **Start development environment in root**
+5. **Create .env in backend**
+
+    MONGO_URI=mongodb+srv://lewiand1234:x3WCLMo8c5rXtels@healthy-gaming-cluster.b7vhvuw.mongodb.net/?retryWrites=true&w=majority&appName=healthy-gaming-cluster
+    JWT_SECRET=yourSuperSecretKey
+    GOOGLE_CLIENT_ID=yourGoogleClientID
+    GOOGLE_CLIENT_SECRET=yourGoogleClientSecret
+    GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
+    SESSION_SECRET=yourSessionSecret
+
+6. **Start development environment in root**
 
     npm run dev
 
