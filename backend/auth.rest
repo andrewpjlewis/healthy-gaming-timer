@@ -1,0 +1,11 @@
+### Check API status
+GET http://localhost:3000/api/status
+
+### Start Google Login (only works in browser)
+GET http://localhost:3000/auth/google
+
+### Handle Google callback (you must be redirected here after login)
+GET http://localhost:3000/auth/google/callback
+
+### Logout user
+GET http://localhost:3000/auth/logout
