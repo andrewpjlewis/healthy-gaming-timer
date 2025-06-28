@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
+
 require('dotenv').config();
 require('./config/passport');
 
@@ -27,6 +30,7 @@ app.use('/auth', authRoutes);
 app.get('/api/status', (req, res) => {
   res.json({ message: 'API is running!' });
 });
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Clean MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
