@@ -26,6 +26,15 @@ app.use(passport.session());
 const authRoutes = require('./routes/authRoutes');
 app.use('/auth', authRoutes);
 
+const sessionRoutes = require('./routes/sessionRoutes');
+app.use('/api/session', sessionRoutes);
+
+const reminderRoutes = require('./routes/reminderRoutes');
+app.use('/api/reminders', reminderRoutes);
+
+const goalRoutes = require('./routes/goalRoutes');
+app.use('/api/goals', goalRoutes);
+
 // Test route
 app.get('/api/status', (req, res) => {
   res.json({ message: 'API is running!' });

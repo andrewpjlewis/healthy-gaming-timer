@@ -1,11 +1,111 @@
-### Check API status
+### ✅ Check API status
 GET http://localhost:3000/api/status
 
-### Start Google Login (only works in browser)
+###
+
+### 🔐 Register new user
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "test1234"
+}
+
+###
+
+### 🔐 Login user (email + password)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "test1234"
+}
+
+###
+
+### 🔐 Get user profile (requires JWT)
+GET http://localhost:3000/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+###
+
+### 🔗 Start Google OAuth (browser-only)
 GET http://localhost:3000/auth/google
 
-### Handle Google callback (you must be redirected here after login)
+###
+
+### 🔁 Handle Google callback (auto-redirect from Google)
 GET http://localhost:3000/auth/google/callback
 
-### Logout user
+###
+
+### 🔓 Logout (session-based only)
 GET http://localhost:3000/auth/logout
+
+###
+
+### 🎮 Start a gaming session
+POST http://localhost:3000/api/session/start
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+###
+
+### 🛑 End a gaming session
+POST http://localhost:3000/api/session/end
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+{
+  "sessionId": "68699be0bc08161532d20a50"
+}
+
+###
+
+### 📥 Get all reminders
+GET http://localhost:3000/api/reminders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+###
+
+### 🔄 Update reminder settings
+POST http://localhost:3000/api/reminders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+{
+  "type": "break",
+  "frequency": 15,
+  "isActive": true
+}
+
+###
+
+### 🧠 Get all health goals
+GET http://localhost:3000/api/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+###
+
+### ✍️ Create a new health goal
+POST http://localhost:3000/api/goals
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+{
+  "title": "Take breaks regularly",
+  "target": 5
+}
+
+###
+
+### 📈 Update health goal progress
+PUT http://localhost:3000/api/goals/68699ecfc57c9a468dbd0a4c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njk5YjcyYmMwODE2MTUzMmQyMGE0NCIsImlhdCI6MTc1MTc1MTU0NCwiZXhwIjoxNzUxODM3OTQ0fQ.2Bv44P7vkvwgxETi09du9tgZtFG1gZyG-imr9esFigI
+
+{
+  "progress": 1
+}

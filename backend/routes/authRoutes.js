@@ -43,4 +43,64 @@ router.get('/logout', (req, res) => {
   });
 });
 
+const { register, login, getProfile } = require('../controllers/auth');
+const { verifyToken } = require('../middleware/middleware');
+
+router.post('/register',
+  /*
+    #swagger.tags = ['Auth']
+    #swagger.summary = 'Register a new user with email and password'
+    #swagger.parameters['obj'] = {
+      in: 'body',
+      description: 'User registration data',
+      required: true,
+      schema: { email: 'user@example.com', password: 'password123' }
+    }
+    #swagger.responses[201] = {
+      description: 'User registered successfully'
+    }
+    #swagger.responses[400] = {
+      description: 'Validation error or user already exists'
+    }
+  */
+  register
+);
+
+router.post('/login',
+  /*
+    #swagger.tags = ['Auth']
+    #swagger.summary = 'Login with email and password'
+    #swagger.parameters['obj'] = {
+      in: 'body',
+      description: 'User login data',
+      required: true,
+      schema: { email: 'user@example.com', password: 'password123' }
+    }
+    #swagger.responses[200] = {
+      description: 'Login successful, returns JWT token'
+    }
+    #swagger.responses[401] = {
+      description: 'Invalid credentials'
+    }
+  */
+  login
+);
+
+router.get('/profile', verifyToken,
+  /*
+    #swagger.tags = ['Auth']
+    #swagger.summary = 'Get current logged-in user profile'
+    #swagger.security = [{
+      bearerAuth: []
+    }]
+    #swagger.responses[200] = {
+      description: 'Returns user profile data'
+    }
+    #swagger.responses[401] = {
+      description: 'Unauthorized'
+    }
+  */
+  getProfile
+);
+
 module.exports = router;

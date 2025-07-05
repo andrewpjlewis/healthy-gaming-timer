@@ -9,10 +9,10 @@ const doc = {
   host: 'localhost:3000',
   schemes: ['http'],
   tags: [
-    {
-      name: 'Auth',
-      description: 'Authentication routes using Google OAuth',
-    },
+    { name: 'Auth', description: 'Authentication routes using Google or Email' },
+    { name: 'Session', description: 'Gaming session management' },
+    { name: 'Reminders', description: 'Health reminder settings' },
+    { name: 'Goals', description: 'Daily health goals tracking' }
   ],
 };
 
