@@ -22,10 +22,12 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.1",
     "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "swagger-autogen": "^2.23.7",
+    "swagger-cli": "^4.0.4",
     "swagger-ui-express": "^5.0.1"
   }
 }
