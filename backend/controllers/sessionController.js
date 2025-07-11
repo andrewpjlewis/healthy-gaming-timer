@@ -31,11 +31,23 @@ exports.endSession = async (req, res) => {
   }
 };
 
-// Add this function:
 exports.getUserSessions = async (req, res) => {
   try {
     const sessions = await Session.find({ user: req.user.id }).sort({ endTime: -1 });
     res.json(sessions);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// ✅ New: Delete session
+exports.deleteSession = async (req, res) => {
+  const { sessionId } = req.params;
+  try {
+    const deleted = await Session.findOneAndDelete({ _id: sessionId, user: req.user.id });
+    if (!deleted) return res.status(404).json({ error: 'Session not found or unauthorized' });
+
+    res.json({ message: 'Session deleted successfully' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

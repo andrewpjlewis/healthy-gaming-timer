@@ -19,6 +19,7 @@ export default function Navbar() {
         <NavLink to="/goals">Goals</NavLink>
         <NavLink to="/session">Session</NavLink>
         <NavLink to="/reminders">Reminders</NavLink>
+        <NavLink to="/settings">Settings</NavLink>
 
         {!loggedIn ? (
           <>

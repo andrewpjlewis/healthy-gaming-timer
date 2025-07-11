@@ -48,3 +48,15 @@ exports.updateGoal = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.deleteGoal = async (req, res) => {
+  const { goalId } = req.params;
+  try {
+    const deleted = await Goal.findOneAndDelete({ _id: goalId, user: req.user.id });
+    if (!deleted) return res.status(404).json({ error: 'Goal not found or unauthorized' });
+
+    res.json({ message: 'Goal deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

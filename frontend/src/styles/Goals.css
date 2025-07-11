@@ -1,0 +1,78 @@
+.container {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.goal-item {
+  margin-bottom: 0.5rem;
+}
+
+.complete-btn {
+  margin-left: 10px;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+}
+
+.completed-text {
+  margin-left: 10px;
+  color: green;
+}
+
+.suggested-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.suggested-item {
+  margin-bottom: 0.3rem;
+}
+
+.add-btn {
+  margin-left: 10px;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+}
+
+.goal-form {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.goal-input {
+  padding: 0.3em 0.5em;
+  font-size: 1rem;
+}
+
+.target-input {
+  width: 5em;
+}
+
+.add-goal-btn {
+  padding: 0.3em 0.8em;
+  cursor: pointer;
+}
+
+.error-text {
+  color: red;
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+.increment-btn {
+  margin-left: 10px;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+.increment-btn:hover {
+  background-color: #45a049;
+}

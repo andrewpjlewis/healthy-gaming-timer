@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getGoals, updateGoal, createGoal } = require('../controllers/goalController');
+const { getGoals, updateGoal, createGoal, deleteGoal } = require('../controllers/goalController');
 const { verifyToken } = require('../middleware/middleware');
 
 router.get('/', verifyToken,
@@ -56,6 +56,22 @@ router.put('/:goalId', verifyToken,
     #swagger.responses[404] = { description: 'Goal not found' }
   */
   updateGoal
+);
+
+router.delete('/:goalId', verifyToken,
+  /*
+    #swagger.tags = ['Goals']
+    #swagger.summary = 'Delete a health goal'
+    #swagger.parameters['goalId'] = {
+      in: 'path',
+      description: 'ID of goal to delete',
+      required: true,
+      type: 'string'
+    }
+    #swagger.responses[200] = { description: 'Goal deleted successfully' }
+    #swagger.responses[404] = { description: 'Goal not found' }
+  */
+  deleteGoal
 );
 
 module.exports = router;

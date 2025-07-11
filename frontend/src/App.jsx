@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import SessionTimer from './components/SessionTimer';
 import GoalList from './components/GoalList';
 import ReminderSettings from './components/ReminderSettings';
+import Settings from './components/Settings';
 import Login from './components/Login';
 import Register from './components/Register';
 import './styles/App.css';
@@ -17,6 +18,7 @@ function App() {
         <Route path="/session" element={<SessionTimer />} />
         <Route path="/goals" element={<GoalList />} />
         <Route path="/reminders" element={<ReminderSettings />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

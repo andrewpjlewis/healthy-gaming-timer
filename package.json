@@ -7,23 +7,66 @@
     "dev": "concurrently \"npm:dev:react\" \"npm:dev:api\" \"npm:dev:electron\"",
     "dev:react": "cd frontend && npm run dev",
     "dev:api": "cd backend && node server.js",
-    "dev:electron": "wait-on http://localhost:5173 && electron ."
+    "dev:electron": "wait-on http://localhost:5173 && electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andrewpjlewis/healthy-gaming-timer.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Lewis",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/andrewpjlewis/healthy-gaming-timer/issues"
   },
   "homepage": "https://github.com/andrewpjlewis/healthy-gaming-timer#readme",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "assets/icon.ico"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "healthy_gaming_timer",
+            "authors": "Andrew Lewis",
+            "description": "A healthy gaming timer app.",
+            "setupIcon": "assets/icon.ico"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": ["win32"]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
     "concurrently": "^9.1.2",
-    "electron": "^36.5.0",
+    "electron": "^28.3.3",
     "wait-on": "^8.0.3"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
   }
 }
