@@ -1,4 +1,4 @@
-const Session = require('../models/Session'); // make sure this path is correct
+const Session = require('../models/Session');
 
 exports.startSession = async (req, res) => {
   try {
@@ -26,6 +26,16 @@ exports.endSession = async (req, res) => {
     await session.save();
 
     res.json({ message: 'Session ended', duration: session.duration });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Add this function:
+exports.getUserSessions = async (req, res) => {
+  try {
+    const sessions = await Session.find({ user: req.user.id }).sort({ endTime: -1 });
+    res.json(sessions);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
