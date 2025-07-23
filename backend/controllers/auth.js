@@ -44,3 +44,13 @@ exports.getProfile = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.deleteAccount = async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.user.id);
+    res.status(200).json({ message: 'Account deleted successfully.' });
+  } catch (err) {
+    console.error('Delete account error:', err);
+    res.status(500).json({ message: 'Failed to delete account.' });
+  }
+};

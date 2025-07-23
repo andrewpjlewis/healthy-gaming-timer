@@ -43,7 +43,7 @@ router.get('/logout', (req, res) => {
   });
 });
 
-const { register, login, getProfile } = require('../controllers/auth');
+const { register, login, getProfile, deleteAccount } = require('../controllers/auth');
 const { verifyToken } = require('../middleware/middleware');
 
 router.post('/register',
@@ -101,6 +101,21 @@ router.get('/profile', verifyToken,
     }
   */
   getProfile
+);
+
+router.delete('/user/delete', verifyToken,
+  /*
+    #swagger.tags = ['Auth']
+    #swagger.summary = 'Delete the current logged-in user account'
+    #swagger.security = [ { bearerAuth: [] } ]
+    #swagger.responses[200] = {
+      description: 'Account deleted successfully'
+    }
+    #swagger.responses[500] = {
+      description: 'Server error or failed to delete'
+    }
+  */
+  deleteAccount
 );
 
 module.exports = router;
