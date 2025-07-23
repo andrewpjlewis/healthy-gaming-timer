@@ -200,6 +200,38 @@
         ]
       }
     },
+    "/auth/user/delete": {
+      "delete": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Delete the current logged-in user account",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account deleted successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Server error or failed to delete"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/session/start": {
       "post": {
         "tags": [
@@ -215,9 +247,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Session started"
-          },
           "201": {
             "description": "Created"
           },
@@ -258,13 +287,76 @@
         ],
         "responses": {
           "200": {
-            "description": "Session ended"
+            "description": "OK"
           },
           "401": {
             "description": "Unauthorized"
           },
           "403": {
             "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/session/": {
+      "get": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Get sessions for current user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/session/{sessionId}": {
+      "delete": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Delete a session",
+        "description": "",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -487,6 +579,41 @@
             "schema": {
               "$ref": "#/definitions/Goal"
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Goal not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Goals"
+        ],
+        "summary": "Delete a health goal",
+        "description": "",
+        "parameters": [
+          {
+            "name": "goalId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of goal to delete"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Goal deleted successfully"
           },
           "401": {
             "description": "Unauthorized"
