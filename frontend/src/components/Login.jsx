@@ -91,7 +91,7 @@ export default function Login() {
 
       {/* Google OAuth login button */}
       <div style={{ textAlign: 'center' }}>
-        <a href="https://healthy-gaming-timer-backend.onrender.com/auth/google" style={{ textDecoration: 'none' }}>
+        <a href="https://healthy-gaming-timer.onrender.com/auth/google" style={{ textDecoration: 'none' }}>
           <button type="button" style={{ padding: '0.5rem 1rem', fontSize: '1rem' }}>
             Login with Google
           </button>
